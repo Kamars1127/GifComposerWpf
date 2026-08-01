@@ -1,0 +1,2 @@
+# GifComposerWpf
+GIF Generator
