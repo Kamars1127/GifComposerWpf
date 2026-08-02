@@ -3,10 +3,210 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:icon="clr-namespace:FluentIcons.Wpf;assembly=FluentIcons.Wpf"
         xmlns:local="clr-namespace:GifComposerWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Gif 產生器" Height="827" Width="1360"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource mainBg}"
+        FontFamily="Noto Sans TC"
+        FontSize="16">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="34"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- 左區塊 -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="17,0,24,0" Style="{DynamicResource iconTextBtnStyle}"
+                        Tag="AddCircle"
+                        Content="新增圖片"/>
+
+                <Button Style="{DynamicResource iconTextBtnStyle}"
+                        Tag="Delete"
+                        Content="全部刪除"/>
+            </StackPanel>
+
+            <Border Grid.Row="2" Padding="15,10,15,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+                    Background="{StaticResource subBlockBg}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{DynamicResource titleStyle}" Text="圖片列表"/>
+                        <TextBlock Margin="6,0,0,0" Style="{DynamicResource titleStyle}" Text="("/>
+                        <TextBlock Style="{DynamicResource titleStyle}" Text="5"/>
+                        <TextBlock Style="{DynamicResource titleStyle}" Text=")"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{DynamicResource iconTextBtnStyle}" Tag="Delete" Content="刪除"/>
+                <Button Grid.Column="2" Style="{DynamicResource iconTextBtnStyle}" Tag="ChevronUp" Content="上移"/>
+                <Button Grid.Column="4" Style="{DynamicResource iconTextBtnStyle}" Tag="ChevronDown" Content="下移"/>
+            </Grid>
+
+            <Grid Grid.Row="6">
+                <Rectangle RadiusX="8" RadiusY="8" Fill="#C9C9C9"
+                           StrokeThickness="2" Stroke="{StaticResource blackGrayFont}" StrokeDashArray="5 8"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="61,48">
+                    <icon:SymbolIcon Symbol="ImageAdd" FontSize="64" Foreground="{StaticResource blackGrayFont}"/>
+                    <StackPanel Margin="12,0">
+                        <TextBlock Style="{DynamicResource hintTextStyle}"  Text="拖曳圖片到此處"/>
+                        <TextBlock Margin="0,16,0,0" Style="{DynamicResource hintTextStyle}"  Text="支援 PNG、JPEG、BMP、WebP"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- 右區塊 -->
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Padding="15,10,15,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+                    Background="{StaticResource subBlockBg}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource titleStyle}" Text="預覽 (640 x 360)"/>
+                        <Image Margin="19,15,0,10" Width="640" Height="360"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Style="{DynamicResource iconBtnStyle}" Content="Play"/>
+                            <Button Margin="10,0,17,0" Style="{DynamicResource iconBtnStyle}" Content="Stop"/>
+                            <TextBlock Style="{DynamicResource labelStyle}" Text="1"/>
+                            <TextBlock Margin="2,0" Style="{DynamicResource labelStyle}" Text="/"/>
+                            <TextBlock Style="{DynamicResource labelStyle}" Text="8"/>
+                            <Slider Margin="22,0,0,0" Width="460" VerticalAlignment="Center" Minimum="0" Maximum="8" IsSnapToTickEnabled="True" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Grid.Column="2" Style="{DynamicResource iconTextBtnStyle}"
+                            VerticalAlignment="Top"
+                            Tag="Play" Content="預覽播放"/>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <!-- 尺寸 -->
+                <Border  Padding="15,10,15,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+                         Background="{StaticResource subBlockBg}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.ColumnSpan="4" Style="{DynamicResource titleStyle}" Text="尺寸"/>
+                        
+                        <RadioButton Grid.Row="2" Grid.Column="1" Content="原始尺寸"/>
+                        
+                        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                            <RadioButton Margin="0,0,12,0" Content="預設尺寸"/>
+                            <ComboBox Width="134"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Horizontal">
+                            <RadioButton Content="自訂尺寸"/>
+                            <TextBox Margin="12,0,3,0" Width="60"/>
+                            <TextBlock Margin="0,0,3,0" Text="x"/>
+                            <TextBox Width="60"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                
+                <!-- 循環播放 -->
+                <Border Margin="20,0" Padding="15,10,15,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+                        Background="{StaticResource subBlockBg}">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource titleStyle}" Text="循環播放"/>
+                        <RadioButton Margin="14,15" Content="無限循環"/>
+
+                        <StackPanel Margin="14,0,0,0" Orientation="Horizontal">
+                            <RadioButton Content="自訂尺寸"/>
+                            <TextBox Margin="12,0" Width="60"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="22"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- 檔案輸出路徑 -->
+                <Border Padding="15,10,15,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+                         Background="{StaticResource subBlockBg}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{DynamicResource labelStyle}" Text="輸出入徑:"/>
+                        <TextBox Grid.Column="2" />
+                        <Button Grid.Column="4" Style="{DynamicResource iconTextBtnStyle}"
+                                Tag="FolderOpen" Content="瀏覽"/>
+                    </Grid>
+                </Border>
+
+                <Button Grid.Column="2" Content="產生"/>
+            </Grid>
+        </Grid>
+
+        <!-- 狀態列 -->
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="5" Background="#4B4E96"/>
     </Grid>
 </Window>
