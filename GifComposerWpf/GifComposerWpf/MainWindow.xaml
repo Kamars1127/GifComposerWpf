@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icon="clr-namespace:FluentIcons.Wpf;assembly=FluentIcons.Wpf"
         xmlns:local="clr-namespace:GifComposerWpf"
+        xmlns:vm="clr-namespace:GifComposerWpf.ViewModels"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         Title="Gif 產生器" Height="827" Width="1360"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource mainBg}"
@@ -41,7 +43,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Margin="17,0,24,0" Style="{DynamicResource iconTextBtnStyle}"
                         Tag="AddCircle"
-                        Content="新增圖片"/>
+                        Content="新增圖片" Command="{Binding LoadImagesCommand}"/>
 
                 <Button Style="{DynamicResource iconTextBtnStyle}"
                         Tag="Delete"
@@ -81,7 +83,7 @@
                     <icon:SymbolIcon Symbol="ImageAdd" FontSize="64" Foreground="{StaticResource blackGrayFont}"/>
                     <StackPanel Margin="12,0">
                         <TextBlock Style="{DynamicResource hintTextStyle}"  Text="拖曳圖片到此處"/>
-                        <TextBlock Margin="0,16,0,0" Style="{DynamicResource hintTextStyle}"  Text="支援 PNG、JPEG、BMP、WebP"/>
+                        <TextBlock Margin="0,16,0,0" Style="{DynamicResource hintTextStyle}"  Text="支援 PNG、JPG、JPEG、BMP、WebP"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
