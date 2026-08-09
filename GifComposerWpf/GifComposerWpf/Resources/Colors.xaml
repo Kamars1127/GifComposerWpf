@@ -13,4 +13,6 @@
 
     <SolidColorBrush x:Key="blackFont" Color="#232323"/>
     <SolidColorBrush x:Key="blackGrayFont" Color="#636363"/>
+
+    <SolidColorBrush x:Key="grayBorder" Color="#CFCFCF"/>
 </ResourceDictionary>

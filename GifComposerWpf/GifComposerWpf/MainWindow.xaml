@@ -6,6 +6,8 @@
         xmlns:icon="clr-namespace:FluentIcons.Wpf;assembly=FluentIcons.Wpf"
         xmlns:local="clr-namespace:GifComposerWpf"
         xmlns:vm="clr-namespace:GifComposerWpf.ViewModels"
+        xmlns:controls="clr-namespace:GifComposerWpf.Views.Controls"
+        xmlns:dd="urn:gong-wpf-dragdrop"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         Title="Gif 產生器" Height="827" Width="1360"
@@ -22,7 +24,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="460"/>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
@@ -47,19 +49,73 @@
 
                 <Button Style="{DynamicResource iconTextBtnStyle}"
                         Tag="Delete"
-                        Content="全部刪除"/>
+                        Content="全部刪除" Command="{Binding ClearAllImagesCommand}"/>
             </StackPanel>
 
-            <Border Grid.Row="2" Padding="15,10,15,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+            <Border Grid.Row="2" Padding="15,10,0,15" BorderThickness="1" BorderBrush="White" CornerRadius="5"
                     Background="{StaticResource subBlockBg}">
-                <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{DynamicResource titleStyle}" Text="圖片列表"/>
                         <TextBlock Margin="6,0,0,0" Style="{DynamicResource titleStyle}" Text="("/>
-                        <TextBlock Style="{DynamicResource titleStyle}" Text="5"/>
+                        <TextBlock Style="{DynamicResource titleStyle}" Text="{Binding Images.Count}"/>
                         <TextBlock Style="{DynamicResource titleStyle}" Text=")"/>
                     </StackPanel>
-                </StackPanel>
+
+                    <ListBox Grid.Row="2" ItemsSource="{Binding Images}"
+                             SelectionMode="Single" Background="Transparent" BorderThickness="0"
+                             dd:DragDrop.IsDragSource="True"
+                             dd:DragDrop.IsDropTarget="True"
+                             dd:DragDrop.DropHandler="{Binding ImageItemDropHandler}"
+                             dd:DragDrop.DropTargetAdornerBrush="#F5F25E">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Background" Value="Transparent"/>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource pressedBg}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ImageItemView Margin="0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    
+                    <ScrollViewer Visibility="Collapsed" Grid.Row="1" Margin="0,10,0,0" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Images}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <controls:ImageItemView Margin="0,5,0,0"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
             </Border>
 
             <Grid Grid.Row="4">
@@ -79,7 +135,7 @@
             <Grid Grid.Row="6">
                 <Rectangle RadiusX="8" RadiusY="8" Fill="#C9C9C9"
                            StrokeThickness="2" Stroke="{StaticResource blackGrayFont}" StrokeDashArray="5 8"/>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="61,48">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,48">
                     <icon:SymbolIcon Symbol="ImageAdd" FontSize="64" Foreground="{StaticResource blackGrayFont}"/>
                     <StackPanel Margin="12,0">
                         <TextBlock Style="{DynamicResource hintTextStyle}"  Text="拖曳圖片到此處"/>
@@ -175,7 +231,7 @@
                             <TextBox Margin="12,0" Width="60"/>
                         </StackPanel>
                     </StackPanel>
-                </Border>
+                </Border>  
             </StackPanel>
 
             <Grid Grid.Row="4">
