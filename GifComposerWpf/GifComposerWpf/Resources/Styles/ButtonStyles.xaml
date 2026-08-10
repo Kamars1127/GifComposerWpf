@@ -32,6 +32,11 @@
                             <Setter Property="Foreground" Value="{StaticResource blackFont}"/>
                             <Setter Property="BorderBrush" Value="{StaticResource pressedBd}"/>
                         </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource disableBg}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource disableBorder}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -97,5 +102,23 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+
+    <Style x:Key="imageItemIconBtnStyle" TargetType="Button" BasedOn="{StaticResource iconBtnNoBgStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected}" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource blackFont}"/>
+            </DataTrigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource hoverBg}"/>
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource pressedBg}"/>
+            </Trigger>
+
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

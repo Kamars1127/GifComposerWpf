@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using GifComposerWpf.Models;
 using System.Windows.Media.Imaging;
 
@@ -78,6 +79,28 @@ namespace GifComposerWpf.ViewModels
                 imageMD.Thumbnail = value;
                 OnPropertyChanged();
             }
+        }
+
+        public int Delay
+        {
+            get => imageMD.Delay;
+            set
+            {
+                if (value == imageMD.Delay) return;
+
+                imageMD.Delay = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [ObservableProperty]
+        private bool isLockDelayInput;
+
+
+        [RelayCommand]
+        private void lockDelayInput()
+        {
+            IsLockDelayInput = !IsLockDelayInput;
         }
 
         public ImageItemViewModel(ImageModel model)

@@ -33,5 +33,10 @@ namespace GifComposerWpf.Models
         /// 縮圖
         /// </summary>
         public BitmapImage? Thumbnail {  get; set; }
+
+        /// <summary>
+        /// 延遲時間
+        /// </summary>
+        public int Delay { get; set; } = 100;
     }
 }
