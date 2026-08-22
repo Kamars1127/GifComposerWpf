@@ -8,7 +8,7 @@
         <Setter Property="Padding" Value="7,4"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
-        <Setter Property="Foreground" Value="{StaticResource blueFont}"/>
+        <Setter Property="Foreground" Value="#46569A"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>

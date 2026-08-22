@@ -7,6 +7,13 @@ namespace GifComposerWpf.Behaviors
 {
     public class ImageItemDropHandler : IDropTarget
     {
+        private readonly Action _updateImageOrder;
+
+        public ImageItemDropHandler(Action updateImageOrder)
+        {
+            _updateImageOrder = updateImageOrder;
+        }
+
         public void DragOver(IDropInfo dropInfo)
         {
             if(dropInfo.Data is ImageItemViewModel && dropInfo.TargetItem is ImageItemViewModel)
@@ -34,20 +41,11 @@ namespace GifComposerWpf.Behaviors
                 newIndex--;
             }
 
-            if(oldIndex != newIndex)
-            {
-                images.Move(oldIndex, newIndex);
-            }
+            if (oldIndex == newIndex) return;
 
-            UpdateImageOrder(images);
-        }
+            images.Move(oldIndex, newIndex);
 
-        private void UpdateImageOrder(ObservableCollection<ImageItemViewModel> images)
-        {
-            for(int i = 0; i < images.Count; i++)
-            {
-                images[i].Order = i + 1;
-            }
+            _updateImageOrder();
         }
     }
 }

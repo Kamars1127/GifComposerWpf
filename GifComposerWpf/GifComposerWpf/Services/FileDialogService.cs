@@ -1,4 +1,5 @@
-﻿using GifComposerWpf.Services.Interfaces;
+﻿using GifComposerWpf.Resources;
+using GifComposerWpf.Services.Interfaces;
 using Microsoft.Win32;
 
 namespace GifComposerWpf.Services
@@ -15,6 +16,27 @@ namespace GifComposerWpf.Services
             };
 
             return dialog.ShowDialog() == true ? dialog.FileNames : Array.Empty<string>();
+        }
+
+        public string SaveFile()
+        {
+            var dialog = new SaveFileDialog
+            {
+                Title = "儲存 GIF",
+                Filter = PublicData.GifFileType,
+                DefaultExt = ".gif",
+                AddExtension = true,
+                FileName = "output.gif"
+            };
+
+            if (dialog.ShowDialog() == true )
+            {
+                return dialog.FileName;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }

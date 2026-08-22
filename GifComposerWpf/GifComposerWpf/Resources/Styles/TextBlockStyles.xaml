@@ -5,15 +5,12 @@
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="TextTrimming" Value="None"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Foreground" Value="White"/>
 
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem},
-                                  Path=IsSelected}" Value="True">
-
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected}" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource blackFont}"/>
-
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -34,9 +31,7 @@
         <Setter Property="Foreground" Value="White"/>
 
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem},
-                                  Path=IsSelected}" Value="True">
-
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource blackFont}"/>
             </DataTrigger>
         </Style.Triggers>

@@ -3,5 +3,7 @@
     public interface IFileDialogService
     {
         string[] OpenFiles(string title, string filter);
+
+        string SaveFile();
     }
 }

@@ -1,0 +1,28 @@
+﻿<Window x:Class="GifComposerWpf.Views.MessageDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GifComposerWpf.Views"
+        xmlns:vm="clr-namespace:GifComposerWpf.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MessageDialogViewModel}"
+        Title="{Binding Title}" Height="187" Width="350"
+        Background="{StaticResource mainBg}"
+        WindowStartupLocation="CenterOwner"
+        Foreground="{StaticResource blackFont}"
+        FontFamily="Noto Sans TC"
+        >
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   FontSize="18" Text="{Binding Message}"/>
+
+        <Button Grid.Row="2" Style="{DynamicResource noIconBtnStyle}" Content="OK"
+                Command="{Binding OkCommand}"/>
+    </Grid>
+</Window>

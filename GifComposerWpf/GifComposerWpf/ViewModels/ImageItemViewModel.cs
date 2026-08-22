@@ -7,88 +7,88 @@ namespace GifComposerWpf.ViewModels
 {
     public partial class ImageItemViewModel : ObservableObject
     {
-        private readonly ImageModel imageMD = new();
+        public ImageModel ImageMD { get; } = new();
 
         public int Order
         {
-            get => imageMD.Order;
+            get => ImageMD.Order;
             set
             {
-                if (value == imageMD.Order) return;
+                if (value == ImageMD.Order) return;
 
-                imageMD.Order = value;
+                ImageMD.Order = value;
                 OnPropertyChanged();
             }
         }
         
         public string Name
         {
-            get => imageMD.Name;
+            get => ImageMD.Name;
             set
             {
-                if(value == imageMD.Name) return;
+                if(value == ImageMD.Name) return;
 
-                imageMD.Name = value;
+                ImageMD.Name = value;
                 OnPropertyChanged();
             }
         }
 
         public string Path
         {
-            get => imageMD.Path;
+            get => ImageMD.Path;
             set
             {
-                if (value == imageMD.Path) return;
+                if (value == ImageMD.Path) return;
 
-                imageMD.Path = value;
+                ImageMD.Path = value;
                 OnPropertyChanged();
             }
         }
 
         public int Width
         {
-            get => imageMD.Width;
+            get => ImageMD.Width;
             set
             {
-                if (value == imageMD.Width) return;
+                if (value == ImageMD.Width) return;
 
-                imageMD.Width = value;
+                ImageMD.Width = value;
                 OnPropertyChanged();
             }
         }
       
         public int Height
         {
-            get => imageMD.Height;
+            get => ImageMD.Height;
             set
             {
-                if (value == imageMD.Height) return;
+                if (value == ImageMD.Height) return;
 
-                imageMD.Height = value;
+                ImageMD.Height = value;
                 OnPropertyChanged();
             }
         }
 
         public BitmapImage? Thumbnail
         {
-            get => imageMD.Thumbnail;
+            get => ImageMD.Thumbnail;
             set
             {
-                if (value == imageMD.Thumbnail) return;
+                if (value == ImageMD.Thumbnail) return;
 
-                imageMD.Thumbnail = value;
+                ImageMD.Thumbnail = value;
                 OnPropertyChanged();
             }
         }
 
         public int Delay
         {
-            get => imageMD.Delay;
+            get => ImageMD.Delay;
             set
             {
-                if (value == imageMD.Delay) return;
+                if (value == ImageMD.Delay) return;
 
-                imageMD.Delay = value;
+                ImageMD.Delay = value;
                 OnPropertyChanged();
             }
         }
@@ -105,7 +105,7 @@ namespace GifComposerWpf.ViewModels
 
         public ImageItemViewModel(ImageModel model)
         {
-            imageMD = model;
+            ImageMD = model;
         }
     }
 }

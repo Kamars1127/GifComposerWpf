@@ -1,6 +1,7 @@
 ﻿using GifComposerWpf.Services;
 using GifComposerWpf.Services.Interfaces;
 using GifComposerWpf.ViewModels;
+using GifComposerWpf.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
@@ -41,15 +42,17 @@ namespace GifComposerWpf
         protected static void ConfigureServices(IServiceCollection services)
         {
             /*--- Views ---*/
-            services.AddSingleton<MainWindow>();  
-           
+            services.AddSingleton<MainWindow>();
+            services.AddTransient<MessageDialogView>();
 
             /*--- ViewModels ---*/
             services.AddSingleton<MainViewModel>();
+            services.AddTransient<MessageDialogViewModel>();
 
             /*--- Service ---*/
             services.AddSingleton<IFileDialogService, FileDialogService>();
             services.AddSingleton<IImageService, ImageService>();
+            services.AddSingleton<IDialogService, DialogService>();
         }
 
         protected override void OnExit(ExitEventArgs e)
