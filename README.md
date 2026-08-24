@@ -28,7 +28,7 @@
 ---
 
 ## Optional
-- <img src="img/home.png" width="60%" />
+- <img src="img/home.png" width="80%" />
 ---
 
 ## Requirements
