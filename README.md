@@ -1,4 +1,4 @@
-## Introduction
+## 𖦹 Introduction
 - 將多張圖片製作成 GIF，
 - 圖片格式: png、jpg、jpeg、bmp、webp。
 ---
