@@ -1,5 +1,6 @@
-# GifComposerWpf
-   將多張圖片 GIF 。
+# 簡介
+- 將多張圖片製作成 GIF，
+- 圖片格式: png、jpg、jpeg、bmp、webp。
 ---
 
 # 主要功能
@@ -11,6 +12,7 @@
 - 輸出尺寸、循環次數設定。
 - 輸出檔案路徑。
 - 產生 GIF。
+
 ---
 
 # NuGet
