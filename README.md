@@ -1,5 +1,5 @@
 # GifComposerWpf
-GIF 產生器。
+   將多張圖片 GIF 。
 ---
 
 # 主要功能
