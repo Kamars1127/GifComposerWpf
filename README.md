@@ -3,7 +3,7 @@
 - 圖片格式: png、jpg、jpeg、bmp、webp。
 ---
 
-## Features
+## 𖦹 Features
 - 載入單張或多張圖片。
 - 刪除單張或全部圖片。
 - 上移或下移單張圖片。
@@ -14,7 +14,7 @@
 - 產生 GIF。
 ---
 
-## NuGet
+## 𖦹 NuGet
 - FluentIcons.Wpf
 - CommunityToolkit.Mvvm
 - Microsoft.Extensions.DependencyInjection
@@ -22,16 +22,16 @@
 - Magick.NET-Q8-AnyCPU
 ---
 
-## Versions
-### 1.0.0
+## 𖦹 Versions
+### ✧ 1.0.0
   - 首次 release。
 ---
 
-## Optional
+## 𖦹 Optional
 - <img src="img/home.png" width="80%" />
 ---
 
-## Requirements
+## 𖦹 Requirements
 - Windows 10/11
 - .NET 10.0
 - Visual Studio 2026
