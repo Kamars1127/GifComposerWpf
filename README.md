@@ -1,6 +1,6 @@
 ## 𖦹 Introduction
-- 將多張圖片製作成 GIF，
-- 圖片格式: png、jpg、jpeg、bmp、webp。
+- 將多張圖片合成 GIF 動畫的 Windows 桌面應用程式。
+  <br>支援 PNG、JPG、JPEG、BMP、WebP 圖片格式，可調整圖片順序、設定單張圖片播放間隔、輸出尺寸與循環次數，並提供 GIF 預覽及檔案輸出功能。0
 ---
 
 ## 𖦹 Features
