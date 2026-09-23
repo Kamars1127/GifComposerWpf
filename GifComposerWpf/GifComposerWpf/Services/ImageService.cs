@@ -92,6 +92,9 @@ namespace GifComposerWpf.Services
                  */
                 image.AnimationDelay = (uint)(img.Delay / 10);
 
+                //播放下一幀前，清除目前這一幀
+                image.GifDisposeMethod = GifDisposeMethod.Background;
+
                 collection.Add(image);
             }
 
